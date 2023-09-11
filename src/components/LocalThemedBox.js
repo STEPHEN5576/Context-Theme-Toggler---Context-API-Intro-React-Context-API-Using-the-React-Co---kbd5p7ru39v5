@@ -7,7 +7,6 @@ const LocalThemedBox = () => {
 
   useEffect(() => {
     setLocalTheme(theme);
-    
   }, [theme]);
 
   function changeLocalTheme() {
