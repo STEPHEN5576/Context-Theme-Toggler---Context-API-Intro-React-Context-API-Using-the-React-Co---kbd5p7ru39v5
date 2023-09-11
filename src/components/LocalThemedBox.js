@@ -29,6 +29,7 @@ const LocalThemedBox = () => {
       <button
         id="local-theme-toggler"
         onClick={changeLocalTheme}
+        className={`btn-${localTheme}`}
       >{`Toggle local theme to ${
         localTheme == "light" ? "dark" : "light"
       }`}</button>
