@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "./ThemeProvider";
 
-// child
 const LocalThemedBox = () => {
-  // props or State changing ?
-  //   const theme = "";
+  const { theme } = useContext(ThemeContext);
+  const [localTheme, setLocalTheme] = useState(theme);
 
-  const contextVal = useContext(ThemeContext);
-
-  const { theme } = contextVal;
-
-  const [localTheme, setLocalTheme] = useState(theme); // default 1st rended
-
-  //   Asynconous handling -> Side effect
   useEffect(() => {
     setLocalTheme(theme);
   }, [theme]);
+
+  function changeLocalTheme() {
+    if (localTheme === "light") {
+      setLocalTheme("dark");
+    } else {
+      setLocalTheme("light");
+    }
+  }
 
   return (
     <div
@@ -23,19 +23,15 @@ const LocalThemedBox = () => {
       id="local-themed-box"
       className={`bg-${localTheme}`}
     >
-      <p className={`txt-${localTheme}`} id="local-theme-text-container">
-        Hii
+      <p id="local-themed-text-container" className={`txt-${localTheme}`}>
+        Hey We did it!!
       </p>
-
       <button
         id="local-theme-toggler"
-        className={`btn btn-${localTheme} txt-${localTheme}`}
-        onClick={() =>
-          setLocalTheme((oldTheme) => (oldTheme === "light" ? "dark" : "light"))
-        }
-      >
-        Toggle local theme to {localTheme === "light" ? "dark" : "light"}
-      </button>
+        onClick={changeLocalTheme}
+      >{`Toggle local theme to ${
+        localTheme == "light" ? "dark" : "light"
+      }`}</button>
     </div>
   );
 };
