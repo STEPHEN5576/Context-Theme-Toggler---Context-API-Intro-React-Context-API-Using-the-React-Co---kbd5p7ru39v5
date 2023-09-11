@@ -4,6 +4,7 @@ const ThemeContext = React.createContext();
 const ThemeProvider = (props) => {
   // context state
   const [theme, setTheme] = useState("light");
+  
   // function to change that state
   const toggleTheme = () => {
     if (theme === "light") {
